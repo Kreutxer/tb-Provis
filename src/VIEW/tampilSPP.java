@@ -148,7 +148,9 @@ public class tampilSPP extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.toBack();
         tampilSPP tSpp = new tampilSPP();
-        tSpp.setVisible(false);
+        setVisible(false);
+        new mainFrm().toFront();
+        new mainFrm().setState(java.awt.Frame.NORMAL);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**

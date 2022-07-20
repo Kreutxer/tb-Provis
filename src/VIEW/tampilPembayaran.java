@@ -186,7 +186,9 @@ public class tampilPembayaran extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.toBack();
         tampilPembayaran tPembayaran = new tampilPembayaran();
-        tPembayaran.setVisible(false);
+        setVisible(false);
+        new mainFrm().toFront();
+        new mainFrm().setState(java.awt.Frame.NORMAL);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
