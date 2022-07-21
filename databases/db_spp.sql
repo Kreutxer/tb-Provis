@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3080
--- Generation Time: Jul 21, 2022 at 04:33 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Host: localhost:3307
+-- Generation Time: Jul 21, 2022 at 05:14 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,14 +37,6 @@ CREATE TABLE `pembayaran` (
   `status` enum('lunas','belum lunas') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `pembayaran`
---
-
-INSERT INTO `pembayaran` (`id_bayar`, `spp_id`, `nim`, `tanggal_bayar`, `bulan_bayar`, `tahun_bayar`, `status`) VALUES
-(1, 11, 10120099, '2022-01-26', 'Januari', '2022', 'belum lunas'),
-(4, 11, 10120099, '2022-01-26', 'Desember', '2022', 'lunas');
-
 -- --------------------------------------------------------
 
 --
@@ -64,8 +56,7 @@ CREATE TABLE `spp` (
 INSERT INTO `spp` (`id_spp`, `tahun`, `nominal`) VALUES
 (4, 2009, 140000),
 (5, 2020, 4000000),
-(10, 2001, 700000),
-(11, 2010, 30000);
+(10, 2001, 700000);
 
 -- --------------------------------------------------------
 
@@ -87,8 +78,7 @@ CREATE TABLE `t_mahasiswa` (
 INSERT INTO `t_mahasiswa` (`nim`, `nama`, `kelas`, `spp_id`) VALUES
 (10120035, 'Bayus', 'IF 3', 4),
 (10120051, 'Bagasa Kara', 'IF 1', 4),
-(10120069, 'Rendys', 'IF2', 5),
-(10120099, 'acep', 'IF 3', 11);
+(10120069, 'Rendys', 'IF2', 5);
 
 --
 -- Indexes for dumped tables
@@ -99,7 +89,7 @@ INSERT INTO `t_mahasiswa` (`nim`, `nama`, `kelas`, `spp_id`) VALUES
 --
 ALTER TABLE `pembayaran`
   ADD PRIMARY KEY (`id_bayar`),
-  ADD KEY `spp_id` (`spp_id`),
+  ADD KEY `spp_id` (`spp_id`,`nim`),
   ADD KEY `nim` (`nim`);
 
 --
@@ -113,8 +103,7 @@ ALTER TABLE `spp`
 --
 ALTER TABLE `t_mahasiswa`
   ADD PRIMARY KEY (`nim`),
-  ADD KEY `spp_id` (`spp_id`),
-  ADD KEY `spp_id_2` (`spp_id`);
+  ADD KEY `spp_id` (`spp_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -140,14 +129,14 @@ ALTER TABLE `spp`
 -- Constraints for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  ADD CONSTRAINT `pembayaran_ibfk_1` FOREIGN KEY (`spp_id`) REFERENCES `spp` (`id_spp`),
-  ADD CONSTRAINT `pembayaran_ibfk_2` FOREIGN KEY (`nim`) REFERENCES `t_mahasiswa` (`nim`);
+  ADD CONSTRAINT `pembayaran_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `t_mahasiswa` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pembayaran_ibfk_2` FOREIGN KEY (`spp_id`) REFERENCES `spp` (`id_spp`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `t_mahasiswa`
 --
 ALTER TABLE `t_mahasiswa`
-  ADD CONSTRAINT `t_mahasiswa_ibfk_1` FOREIGN KEY (`spp_id`) REFERENCES `spp` (`id_spp`);
+  ADD CONSTRAINT `t_mahasiswa_ibfk_1` FOREIGN KEY (`spp_id`) REFERENCES `spp` (`id_spp`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

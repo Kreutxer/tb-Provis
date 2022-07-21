@@ -90,5 +90,20 @@ public class SPP {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
+        public void hapus(String spp_id_dt) {
+        db = new koneksi();
+        db.KoneksiDatabase();
+        try {
+            query = "DELETE FROM spp WHERE id_spp=?";
+            PreparedStatement hapus_data = db.con.prepareStatement(query);
+            hapus_data.setString(1, spp_id_dt);
+            hapus_data.executeUpdate();
+            hapus_data.close();
+            db.con.close();
+            JOptionPane.showMessageDialog(null, "Berhasil Menghapus Data : " + spp_id_dt);
 
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
 }
