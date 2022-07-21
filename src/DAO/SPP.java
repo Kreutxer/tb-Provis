@@ -68,8 +68,8 @@ public class SPP {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
-    
-        public void ubahSPP(String spp_id_dt, String tahun_dt, String nominal_dt) {
+
+    public void ubahSPP(String spp_id_dt, String tahun_dt, String nominal_dt) {
         db = new koneksi();
         db.KoneksiDatabase();
         try {
@@ -90,7 +90,8 @@ public class SPP {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
-        public void hapus(String spp_id_dt) {
+
+    public void hapus(String spp_id_dt) {
         db = new koneksi();
         db.KoneksiDatabase();
         try {
@@ -105,5 +106,37 @@ public class SPP {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
+    }
+
+    public String[][] cari_SPP(String kata_kunci) {
+        rs = null;
+        String[][] data = null;
+        db = new koneksi();
+        db.KoneksiDatabase();
+        int jumlah_baris = 0;
+        try {
+            st = db.con.createStatement();
+            query = "SELECT COUNT(id_spp) AS jum FROM spp";
+            rs = st.executeQuery(query);
+            if (rs.next()) {
+                jumlah_baris = rs.getInt("jum");
+            }
+            query = "SELECT * FROM spp WHERE id_spp='" + kata_kunci + "'";
+            rs = st.executeQuery(query);
+            data = new String[jumlah_baris][5];
+
+            int r = 0;
+            while (rs.next()) {
+                data[r][0] = rs.getString("id_spp");
+                data[r][1] = rs.getString("tahun");
+                data[r][2] = rs.getString("nominal");
+                r++;
+            }
+            st.close();
+            db.con.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        return data;
     }
 }

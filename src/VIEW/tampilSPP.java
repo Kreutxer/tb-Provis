@@ -37,8 +37,10 @@ public class tampilSPP extends javax.swing.JFrame {
         initComponents();
         Refresh_JTable();
     }
-    
-    
+
+    private void bersihkan_teks() {
+        jTextField1.setText("");
+    }
 
     editSPP eSPP = new editSPP();
     siswa s = new siswa();
@@ -155,6 +157,11 @@ public class tampilSPP extends javax.swing.JFrame {
         });
 
         jButton3.setText("Cari SPP");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Hapus SPP");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -252,6 +259,14 @@ public class tampilSPP extends javax.swing.JFrame {
         // TODO add your handling code here:
         Refresh_JTable();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        SPP sP = new SPP();
+        rs = sP.cari_SPP(jTextField1.getText());
+        model.SetTabel(jTable1, rs, namaKolom, jmlKolom, lebar);
+        bersihkan_teks();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
