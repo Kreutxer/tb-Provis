@@ -20,7 +20,7 @@ import javax.swing.table.TableModel;
  */
 public class tampilSiswa extends javax.swing.JFrame {
 
-    String[] namaKolom = {"nim", "nama", "kelas", "spp_id"};
+    String[] namaKolom = {"NIM", "Nama", "Kelas", "ID SPP"};
     int jmlKolom = namaKolom.length;
     int[] lebar = {150, 250, 200, 110, 300};
     ModelTabel model = new ModelTabel();

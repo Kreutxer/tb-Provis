@@ -7,6 +7,9 @@ package VIEW;
 
 import DAO.ModelTabel;
 import DAO.SPP;
+import DAO.siswa;
+import javax.swing.JFrame;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -14,7 +17,7 @@ import DAO.SPP;
  */
 public class tampilSPP extends javax.swing.JFrame {
 
-    String[] namaKolom = {"id_spp", "nama", "nominal"};
+    String[] namaKolom = {"ID SPP", "Tahun", "Nominal"};
     int jmlKolom = namaKolom.length;
     int[] lebar = {150, 250, 200, 110, 300};
     ModelTabel model = new ModelTabel();
@@ -33,6 +36,8 @@ public class tampilSPP extends javax.swing.JFrame {
         initComponents();
         Refresh_JTable();
     }
+
+    editSPP eSPP = new editSPP();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,6 +59,8 @@ public class tampilSPP extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -95,11 +102,26 @@ public class tampilSPP extends javax.swing.JFrame {
                 "ID SPP", "Tahun", "Nominal"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Tambah SPP");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Edit SPP");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Cari SPP");
 
@@ -113,7 +135,7 @@ public class tampilSPP extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 976, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -121,8 +143,7 @@ public class tampilSPP extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 12, Short.MAX_VALUE)))
+                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -138,7 +159,7 @@ public class tampilSPP extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -152,6 +173,36 @@ public class tampilSPP extends javax.swing.JFrame {
         new mainFrm().toFront();
         new mainFrm().setState(java.awt.Frame.NORMAL);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        tambahSPP tSP = new tambahSPP();
+        tSP.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int getRow = jTable1.getSelectedRow();
+        TableModel model = jTable1.getModel();
+
+        String id_spp = model.getValueAt(getRow, 0).toString();
+        String tahun = model.getValueAt(getRow, 1).toString();
+        String nominal = model.getValueAt(getRow, 2).toString();
+
+        eSPP.pack();
+        eSPP.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        eSPP.jTextField1.setText(id_spp);
+        eSPP.jTextField2.setText(tahun);
+        eSPP.jTextField3.setText(nominal);
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        eSPP.setVisible(true);
+
+        SPP s = new SPP();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -14,7 +14,8 @@ import javax.swing.JOptionPane;
  * @author HP
  */
 public class koneksi {
-        public Connection con;
+
+    public Connection con;
 
     public boolean KoneksiDatabase() {
         try {
