@@ -42,7 +42,7 @@ public class siswa {
         return data;
     }
     
-    public String[][] Tampil_Semua_mhs() {
+    public String[][] Tampil_Semua_Siswa() {
         rs = null;
         String[][] data = null;
         db = new koneksi();
@@ -95,7 +95,7 @@ public class siswa {
         try {
             query = "UPDATE t_mahasiswa SET nama=?, nama=?, kelas=?, spp_id=? WHERE nim=?;";
             PreparedStatement update = db.con.prepareStatement(query);
-            
+            update.setString(1, nim_dt);
             update.setString(1, nim_dt);
             update.setString(2, nama_dt);
             update.setString(3, kelas_dt);

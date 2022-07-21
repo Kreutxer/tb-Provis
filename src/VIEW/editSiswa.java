@@ -5,12 +5,18 @@
  */
 package VIEW;
 
+import DAO.ModelTabel;
+import DAO.siswa;
+import javax.swing.JTextField;
+
 /**
  *
  * @author aanji
  */
 public class editSiswa extends javax.swing.JFrame {
 
+    
+    
     /**
      * Creates new form editSiswa
      */
@@ -52,6 +58,11 @@ public class editSiswa extends javax.swing.JFrame {
         jLabel5.setText("ID SPP :");
 
         jButton1.setText("EDIT");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("BACK");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -136,6 +147,12 @@ public class editSiswa extends javax.swing.JFrame {
         new mainFrm().setState(java.awt.Frame.NORMAL);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        siswa s = new siswa();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -179,9 +196,9 @@ public class editSiswa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    public javax.swing.JTextField jTextField1;
+    public javax.swing.JTextField jTextField2;
+    public javax.swing.JTextField jTextField3;
+    public javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

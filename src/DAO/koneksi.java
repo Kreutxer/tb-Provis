@@ -19,7 +19,7 @@ public class koneksi {
     public boolean KoneksiDatabase() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_spp", "root", ""); //gantiport
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3080/db_spp", "root", ""); //gantiport
             con = conn;
             return true;
         } catch (Exception e) {

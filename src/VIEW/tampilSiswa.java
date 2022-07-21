@@ -11,6 +11,8 @@ import DAO.siswa;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import javax.swing.JFrame;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -26,10 +28,11 @@ public class tampilSiswa extends javax.swing.JFrame {
 
     private void Refresh_JTable() {
         siswa s = new siswa();
-        rs = s.Tampil_Semua_mhs();
+        rs = s.Tampil_Semua_Siswa();
         model.SetTabel(jTable1, rs, namaKolom, jmlKolom, lebar);
     }
-    private void bersihkan_teks(){
+
+    private void bersihkan_teks() {
         jTextField1.setText("");
     }
 
@@ -41,6 +44,8 @@ public class tampilSiswa extends javax.swing.JFrame {
         initComponents();
         Refresh_JTable();
     }
+
+    editSiswa eS = new editSiswa();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -116,25 +121,27 @@ public class tampilSiswa extends javax.swing.JFrame {
                 .addGap(70, 70, 70)
                 .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2)))
+                        .addComponent(jLabel2))
+                    .addComponent(jButton6))
                 .addContainerGap())
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "NIM", "Nama", "Kelas", "ID SPP"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Tambah Siswa");
@@ -217,7 +224,7 @@ public class tampilSiswa extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         tambahSiswa vtsiswa = new tambahSiswa();
-         vtsiswa.setVisible(true);
+        vtsiswa.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -228,12 +235,12 @@ public class tampilSiswa extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         hapusSiswa hSiswa = new hapusSiswa();
-     hSiswa.setVisible(true);
+        hSiswa.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        
+
         siswa s = new siswa();
         rs = s.cari_siswa(jTextField1.getText());
         model.SetTabel(jTable1, rs, namaKolom, jmlKolom, lebar);
@@ -242,12 +249,32 @@ public class tampilSiswa extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        editSiswa eSiswa = new editSiswa();
-         eSiswa.setVisible(true);
-         
-         siswa s = new siswa();
-            rs = s.cari_siswa(jTextField1.getText());
+        eS.setVisible(true);
+
+        siswa s = new siswa();
+        rs = s.cari_siswa(jTextField1.getText());
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int getRow = jTable1.getSelectedRow();
+        TableModel model = jTable1.getModel();
+
+        String nim = model.getValueAt(getRow, 0).toString();
+        String nama = model.getValueAt(getRow, 1).toString();
+        String kelas = model.getValueAt(getRow, 2).toString();
+        String spp_id = model.getValueAt(getRow, 3).toString();
+
+        
+        eS.pack();
+        eS.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+        eS.jTextField1.setText(nim);
+        eS.jTextField2.setText(nama);
+        eS.jTextField3.setText(kelas);
+        eS.jTextField4.setText(spp_id);
+        
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
