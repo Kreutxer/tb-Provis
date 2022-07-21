@@ -89,18 +89,20 @@ public class siswa {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
+    
     public void ubah(String nim_dt, String nama_dt, String kelas_dt, String spp_id_dt) {
         db = new koneksi();
         db.KoneksiDatabase();
         try {
-            query = "UPDATE t_mahasiswa SET nama=?, nama=?, kelas=?, spp_id=? WHERE nim=?;";
+//            query = "UPDATE t_mahasiswa SET nim='"+nim_dt+"',nama='"+nama_dt+"',kelas='"+kelas_dt+"',spp_id='"+spp_id_dt+"'";
+            //
+            query = "UPDATE t_mahasiswa SET  nama=?, kelas=?, spp_id=? WHERE nim=?;";
             PreparedStatement update = db.con.prepareStatement(query);
-            update.setString(1, nim_dt);
-            update.setString(1, nim_dt);
-            update.setString(2, nama_dt);
-            update.setString(3, kelas_dt);
-            update.setString(4, spp_id_dt);
-            
+            update.setString(1, nama_dt);
+            update.setString(2, kelas_dt);
+            update.setString(3, spp_id_dt);
+            update.setString(4, nim_dt);
+//            
             update.executeUpdate();
             update.close();
             db.con.close();

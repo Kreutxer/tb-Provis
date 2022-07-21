@@ -149,7 +149,13 @@ public class editSiswa extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        siswa s = new siswa();
+        siswa sw = new siswa();
+        String nim = jTextField1.getText();
+        String nama = jTextField2.getText();
+        String kelas = jTextField3.getText();
+        String spp_id = jTextField4.getText();
+        
+        sw.ubah(nim, nama, kelas, spp_id);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

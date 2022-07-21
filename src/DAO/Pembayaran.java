@@ -58,7 +58,7 @@ public class Pembayaran {
         return data;
     }
 
-    public String[][] cariSiswa(String kata_kunci) {
+    public String[][] cariBayar(String kata_kunci) {
         rs = null;
         String[][] data = null;
         db = new koneksi();

@@ -178,7 +178,7 @@ public class tampilPembayaran extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Pembayaran p = new Pembayaran();
-        rs = p.cariSiswa(jTextField1.getText());
+        rs = p.cariBayar(jTextField1.getText());
         model.SetTabel(jTable1, rs, namaKolom, jmlKolom, lebar);
     }//GEN-LAST:event_jButton1ActionPerformed
 

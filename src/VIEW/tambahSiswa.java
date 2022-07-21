@@ -11,6 +11,7 @@ package VIEW;
  */
 import DAO.siswa;
 import VIEW.tampilSiswa;
+
 public class tambahSiswa extends javax.swing.JFrame {
 
     /**
@@ -18,15 +19,16 @@ public class tambahSiswa extends javax.swing.JFrame {
      */
     public tambahSiswa() {
         initComponents();
-        
+
     }
-        private void bersihkan_teks(){
-            isiNIM.setText("");
-            isiNAMA.setText("");
-            isiKELAS.setText("");
-            isiIDSPP.setText("");
+
+    private void bersihkan_teks() {
+        isiNIM.setText("");
+        isiNAMA.setText("");
+        isiKELAS.setText("");
+        isiIDSPP.setText("");
     }
-         
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -201,12 +203,12 @@ public class tambahSiswa extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         siswa s = new siswa();
-       
-            s.insert(   isiNIM.getText(),
-                        isiNAMA.getText(),
-                        isiKELAS.getText(),
-                        isiIDSPP.getText());
-        
+
+        s.insert(isiNIM.getText(),
+                isiNAMA.getText(),
+                isiKELAS.getText(),
+                isiIDSPP.getText());
+
         bersihkan_teks();
     }//GEN-LAST:event_jButton1MouseClicked
 
