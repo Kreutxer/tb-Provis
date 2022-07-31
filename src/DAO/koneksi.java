@@ -20,7 +20,7 @@ public class koneksi {
     public boolean KoneksiDatabase() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3080/db_spp", "root", ""); //port bagas 3307 rendy 3080
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_spp", "root", ""); //port bagas 3307 rendy 3080
             con = conn;
             return true;
         } catch (Exception e) {

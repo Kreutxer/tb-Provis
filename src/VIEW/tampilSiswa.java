@@ -25,6 +25,7 @@ public class tampilSiswa extends javax.swing.JFrame {
     int[] lebar = {150, 250, 200, 110, 300};
     ModelTabel model = new ModelTabel();
     private String[][] rs;
+    private String string;
 
     private void Refresh_JTable() {
         siswa s = new siswa();
@@ -85,6 +86,12 @@ public class tampilSiswa extends javax.swing.JFrame {
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
+            }
+        });
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
             }
         });
 
@@ -239,11 +246,18 @@ public class tampilSiswa extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-
-        siswa s = new siswa();
+        
+        if(jTextField1.getText().equals(""))
+        {
+              JOptionPane.showMessageDialog(null, "Isi terlebih dahulu kolom  pencarian nim", "Pesan Kesalahan", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else {
+            siswa s = new siswa();
         rs = s.cari_siswa(jTextField1.getText());
         model.SetTabel(jTable1, rs, namaKolom, jmlKolom, lebar);
         bersihkan_teks();
+                    }
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -273,6 +287,13 @@ public class tampilSiswa extends javax.swing.JFrame {
         eS.jTextField4.setText(spp_id);
         
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        // TODO add your handling code here:
+//        siswa s = new siswa();
+//        s.filterhuruf(evt);
+        
+    }//GEN-LAST:event_jTextField1KeyTyped
 
     /**
      * @param args the command line arguments

@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import java.awt.event.KeyEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -142,10 +143,10 @@ public class siswa {
             if (rs.next()) {
                 jumlah_baris = rs.getInt("jum");
             }
-            query = "SELECT * FROM t_mahasiswa WHERE nim='" + kata_kunci + "'";
+             query = "SELECT * FROM t_mahasiswa WHERE nim='" + kata_kunci + "' OR nama='" + kata_kunci + "' OR kelas='" + kata_kunci + "'";
             rs = st.executeQuery(query);
             data = new String[jumlah_baris][5];
-
+            
             int r = 0;
             while (rs.next()) {
                 data[r][0] = rs.getString("nim");
@@ -154,6 +155,7 @@ public class siswa {
                 data[r][3] = rs.getString("spp_id");
                 r++;
             }
+            
             st.close();
             db.con.close();
         } catch (SQLException e) {
@@ -161,4 +163,12 @@ public class siswa {
         }
         return data;
     }
+    
+     public void filterhuruf(KeyEvent a){
+        if(Character.isAlphabetic(a.getKeyChar())){
+            a.consume();
+            JOptionPane.showMessageDialog(null,"Isi dengan nim bukan string");
+        }
+    }
+    
 }
