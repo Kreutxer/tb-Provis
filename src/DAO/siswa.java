@@ -91,14 +91,11 @@ public class siswa {
 //            JOptionPane.showMessageDialog(null, e.getMessage());
             if (e.getErrorCode() == 1062) {
                 JOptionPane.showMessageDialog(null, "NIM Sudah Ada");
-            } else if (e.getErrorCode() == 1406) {
-                JOptionPane.showMessageDialog(null, "NIM hanya boleh diisi oleh angka!");
             }
-
         }
     }
 
-    public void ubah(String nim_dt, String nama_dt, String kelas_dt, String spp_id_dt) {
+    public void ubah(String nama_dt, String kelas_dt, String spp_id_dt) {
         db = new koneksi();
         db.KoneksiDatabase();
         try {
@@ -109,15 +106,38 @@ public class siswa {
             update.setString(1, nama_dt);
             update.setString(2, kelas_dt);
             update.setString(3, spp_id_dt);
-            update.setString(4, nim_dt);
 //            
             update.executeUpdate();
             update.close();
             db.con.close();
-            JOptionPane.showMessageDialog(null, "Berhasil Merubah Data : " + nim_dt);
+            JOptionPane.showMessageDialog(null, "Berhasil Merubah Data");
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            if (e.getErrorCode() == 1062) {
+                JOptionPane.showMessageDialog(null, "NIM Sudah Ada");
+            }
+        }
+    }
+    
+        public void ubah_nis(String nim_dt) {
+        db = new koneksi();
+        db.KoneksiDatabase();
+        try {
+//            query = "UPDATE t_mahasiswa SET nim='"+nim_dt+"',nama='"+nama_dt+"',kelas='"+kelas_dt+"',spp_id='"+spp_id_dt+"'";
+            //
+            query = "UPDATE t_mahasiswa SET  nama=?, kelas=?, spp_id=? WHERE nim=?;";
+            PreparedStatement update = db.con.prepareStatement(query);
+            update.setString(1, nim_dt);
+//            
+            update.executeUpdate();
+            update.close();
+            db.con.close();
+            JOptionPane.showMessageDialog(null, "Berhasil Merubah Data");
+
+        } catch (SQLException e) {
+            if (e.getErrorCode() == 1062) {
+                JOptionPane.showMessageDialog(null, "NIM Sudah Ada");
+            }
         }
     }
 
@@ -177,6 +197,10 @@ public class siswa {
             a.consume();
             JOptionPane.showMessageDialog(null, "Isi dengan nim bukan string");
         }
+    }
+
+    public void ubah(String nim) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
