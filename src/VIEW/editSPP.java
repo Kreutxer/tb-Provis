@@ -90,6 +90,11 @@ public class editSPP extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Batal");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,6 +155,15 @@ public class editSPP extends javax.swing.JFrame {
         String spp_id = jTextField1.getText();
         sp.ubahSPP(spp_id, tahun, nominal);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.toBack();
+        tampilPembayaran tP = new tampilPembayaran();
+        setVisible(false);
+        new mainFrm().toFront();
+        new mainFrm().setState(java.awt.Frame.NORMAL);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

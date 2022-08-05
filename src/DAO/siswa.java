@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -42,7 +43,7 @@ public class siswa {
         }
         return data;
     }
-    
+
     public String[][] Tampil_Semua_Siswa() {
         rs = null;
         String[][] data = null;
@@ -76,21 +77,27 @@ public class siswa {
         }
         return data;
     }
-    
+
     public void insert(String nim_dt, String nama_dt, String kelas_dt, String spp_id_dt) {
         db = new koneksi();
         db.KoneksiDatabase();
         try {
             st = db.con.createStatement();
-            query = "INSERT INTO t_mahasiswa(nim, nama, kelas, spp_id) VALUES ('" + nim_dt + "','" + nama_dt + "','" + kelas_dt + "','" + spp_id_dt +"')";
+            query = "INSERT INTO t_mahasiswa(nim, nama, kelas, spp_id) VALUES ('" + nim_dt + "','" + nama_dt + "','" + kelas_dt + "','" + spp_id_dt + "')";
             st.executeUpdate(query);
             db.con.close();
             JOptionPane.showMessageDialog(null, "Simpan Data Berhasil");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(null, e.getMessage());
+            if (e.getErrorCode() == 1062) {
+                JOptionPane.showMessageDialog(null, "NIM Sudah Ada");
+            } else if (e.getErrorCode() == 1406) {
+                JOptionPane.showMessageDialog(null, "NIM hanya boleh diisi oleh angka!");
+            }
+
         }
     }
-    
+
     public void ubah(String nim_dt, String nama_dt, String kelas_dt, String spp_id_dt) {
         db = new koneksi();
         db.KoneksiDatabase();
@@ -113,7 +120,7 @@ public class siswa {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
-    
+
     public void hapus(String nim_dt) {
         db = new koneksi();
         db.KoneksiDatabase();
@@ -130,6 +137,7 @@ public class siswa {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
+
     public String[][] cari_siswa(String kata_kunci) {
         rs = null;
         String[][] data = null;
@@ -143,10 +151,10 @@ public class siswa {
             if (rs.next()) {
                 jumlah_baris = rs.getInt("jum");
             }
-             query = "SELECT * FROM t_mahasiswa WHERE nim='" + kata_kunci + "' OR nama='" + kata_kunci + "' OR kelas='" + kata_kunci + "'";
+            query = "SELECT * FROM t_mahasiswa WHERE nim='" + kata_kunci + "' OR nama='" + kata_kunci + "' OR kelas='" + kata_kunci + "'";
             rs = st.executeQuery(query);
             data = new String[jumlah_baris][5];
-            
+
             int r = 0;
             while (rs.next()) {
                 data[r][0] = rs.getString("nim");
@@ -155,7 +163,7 @@ public class siswa {
                 data[r][3] = rs.getString("spp_id");
                 r++;
             }
-            
+
             st.close();
             db.con.close();
         } catch (SQLException e) {
@@ -163,12 +171,12 @@ public class siswa {
         }
         return data;
     }
-    
-     public void filterhuruf(KeyEvent a){
-        if(Character.isAlphabetic(a.getKeyChar())){
+
+    public void filterhuruf(KeyEvent a) {
+        if (Character.isAlphabetic(a.getKeyChar())) {
             a.consume();
-            JOptionPane.showMessageDialog(null,"Isi dengan nim bukan string");
+            JOptionPane.showMessageDialog(null, "Isi dengan nim bukan string");
         }
     }
-    
+
 }

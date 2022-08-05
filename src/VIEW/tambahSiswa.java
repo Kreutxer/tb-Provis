@@ -51,6 +51,7 @@ public class tambahSiswa extends javax.swing.JFrame {
         isiIDSPP = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,6 +90,12 @@ public class tambahSiswa extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("ID SPP");
+
+        isiNIM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                isiNIMKeyPressed(evt);
+            }
+        });
 
         isiIDSPP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,6 +143,9 @@ public class tambahSiswa extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addGap(116, 116, 116)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(isiKELAS, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
                             .addComponent(isiNAMA)
                             .addComponent(isiNIM, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -149,7 +159,9 @@ public class tambahSiswa extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(14, 14, 14)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(isiNIM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -169,7 +181,7 @@ public class tambahSiswa extends javax.swing.JFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -201,7 +213,7 @@ public class tambahSiswa extends javax.swing.JFrame {
     }//GEN-LAST:event_isiIDSPPActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
+        // TODO add your handling code here:    
         siswa s = new siswa();
 
         s.insert(isiNIM.getText(),
@@ -228,6 +240,17 @@ public class tambahSiswa extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void isiNIMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_isiNIMKeyPressed
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isLetter(c)){
+            isiNIM.setEditable(false);
+            jLabel6.setText("NIS Hanya Diisi Angka!");
+        } else {
+            isiNIM.setEditable(true);
+        }
+    }//GEN-LAST:event_isiNIMKeyPressed
 
     /**
      * @param args the command line arguments
@@ -276,6 +299,7 @@ public class tambahSiswa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
