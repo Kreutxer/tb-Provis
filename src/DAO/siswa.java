@@ -88,7 +88,7 @@ public class siswa {
             db.con.close();
             JOptionPane.showMessageDialog(null, "Simpan Data Berhasil");
         } catch (SQLException e) {
-//            JOptionPane.showMessageDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, "Tambah data gagal");
             if (e.getErrorCode() == 1062) {
                 JOptionPane.showMessageDialog(null, "NIM Sudah Ada");
             }
@@ -106,7 +106,7 @@ public class siswa {
             update.setString(1, nama_dt);
             update.setString(2, kelas_dt);
             update.setString(3, spp_id_dt);
-            update.setString(4, nim_dt);
+            update.setString(4,  nim_dt);
 //            
             update.executeUpdate();
             update.close();
