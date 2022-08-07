@@ -5,6 +5,8 @@
  */
 package VIEW;
 
+import DAO.Pembayaran;
+
 /**
  *
  * @author HP
@@ -94,6 +96,11 @@ public class tambahPembayaran extends javax.swing.JFrame {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Belum Lunas", "Lunas" }));
 
         jButton1.setText("Simpan");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Batal");
 
@@ -171,6 +178,18 @@ public class tambahPembayaran extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String id_spp = jTextField1.getText();
+        String nim = jTextField2.getText();
+        String tanggal = jTextField3.getText();
+        String bulan = (String) jComboBox1.getSelectedItem();
+        String tahun = jTextField4.getText();
+        String status = (String) jComboBox2.getSelectedItem();
+        Pembayaran p = new Pembayaran();
+        p.insert(id_spp, id_spp, nim, tanggal, bulan, tahun, status);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
