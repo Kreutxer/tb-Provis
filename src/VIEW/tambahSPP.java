@@ -6,6 +6,9 @@
 package VIEW;
 
 import DAO.SPP;
+import DAO.siswa;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,6 +23,11 @@ public class tambahSPP extends javax.swing.JFrame {
         initComponents();
     }
 
+    private void bersihkan_teks() {
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -168,12 +176,24 @@ public class tambahSPP extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String id_spp = jTextField1.getText();
-        String tahun = jTextField2.getText();
-        String nominal = jTextField3.getText();
+        
+        int res = JOptionPane.showOptionDialog(new JFrame(), "Apakah data yang di isi sudah betul?","Notification",
+         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+         new Object[] { "Yes", "No" }, JOptionPane.YES_OPTION);
+            if (res == JOptionPane.YES_OPTION) {
+                SPP sp = new SPP();
+                sp.insertSPP(jTextField1.getText(),
+                jTextField2.getText(),
+                jTextField3.getText());
 
-        SPP sp = new SPP();
-        sp.insertSPP(id_spp, tahun, nominal);
+                bersihkan_teks();
+            } else if (res == JOptionPane.NO_OPTION) {
+               this.toBack();
+                  tambahSPP tSP = new tambahSPP();
+                    tSP.setVisible(true);
+            } else if (res == JOptionPane.CLOSED_OPTION) {
+               System.out.println("Window closed without selecting!");
+            }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
