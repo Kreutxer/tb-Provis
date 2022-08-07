@@ -294,6 +294,7 @@ public class tampilSiswa extends javax.swing.JFrame {
         eS.pack();
         eS.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
+        eS.jTextField1.setText(nim);
         eS.jTextField2.setText(nama);
         eS.jTextField3.setText(kelas);
         eS.jTextField4.setText(spp_id);

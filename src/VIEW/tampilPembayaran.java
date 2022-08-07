@@ -8,6 +8,8 @@ package VIEW;
 import DAO.ModelTabel;
 import DAO.Pembayaran;
 import DAO.SPP;
+import DAO.koneksi;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,6 +35,9 @@ public class tampilPembayaran extends javax.swing.JFrame {
     public tampilPembayaran() {
         initComponents();
     }
+    
+    private koneksi db;
+    private String query;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -181,8 +186,20 @@ public class tampilPembayaran extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        db = new koneksi();
+        db.KoneksiDatabase();
         tambahPembayaran tP = new tambahPembayaran();
+        try {
+        query = "select id_spp from t_mahasiswa where nim=?";
+        
+        
+        
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        tP.jTextField1.setText(id_spp);
         tP.setVisible(true);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
