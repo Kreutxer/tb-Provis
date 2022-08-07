@@ -93,4 +93,23 @@ public class Pembayaran {
         }
         return data;
     }
+
+    public void insert(String id_bayar_dt, String spp_id_dt,String nim_dt, String tanggal_bayar_dt, String bulan_bayar_dt, String tahun_bayar_dt, String status_dt) {
+        db = new koneksi();
+        db.KoneksiDatabase();
+        try {
+            st = db.con.createStatement();
+            query = "INSERT INTO pembayaran (id_bayar, spp_id, nim, tanggal_bayar, bulan_bayar, tahun_bayar, status) VALUES (NULL, '"+spp_id_dt+"', '"+nim_dt+"', '"+tanggal_bayar_dt+"', '"+bulan_bayar_dt+"', '"+tahun_bayar_dt+"', '"+status_dt+"');";
+            st.executeUpdate(query);
+            db.con.close();
+            JOptionPane.showMessageDialog(null, "Simpan Data Berhasil");
+        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(null, e.getMessage());
+            if (e.getErrorCode() == 1062) {
+                JOptionPane.showMessageDialog(null, "NIM Sudah Ada");
+            }
+        }
+    }
+
+    //INSERT INTO pembayaran (id_bayar, spp_id, nim, tanggal_bayar, bulan_bayar, tahun_bayar, status) VALUES (NULL, '5', '10120067', '2022-07-14', 'August', '2022', 'lunas');
 }
