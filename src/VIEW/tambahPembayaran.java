@@ -103,6 +103,11 @@ public class tambahPembayaran extends javax.swing.JFrame {
         });
 
         jButton2.setText("Batal");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -190,6 +195,15 @@ public class tambahPembayaran extends javax.swing.JFrame {
         Pembayaran p = new Pembayaran();
         p.insert(id_spp, id_spp, nim, tanggal, bulan, tahun, status);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.toBack();
+        tampilPembayaran tS = new tampilPembayaran();
+        setVisible(false);
+        new mainFrm().toFront();
+        new mainFrm().setState(java.awt.Frame.NORMAL);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

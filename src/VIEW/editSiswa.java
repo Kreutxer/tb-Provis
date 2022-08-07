@@ -261,7 +261,7 @@ public class editSiswa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    public javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField1;
     public javax.swing.JTextField jTextField2;
     public javax.swing.JTextField jTextField3;
     public javax.swing.JTextField jTextField4;

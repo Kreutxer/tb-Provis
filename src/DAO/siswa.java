@@ -102,7 +102,7 @@ public class siswa {
         }
     }
 
-    public void ubah(String nama_dt, String kelas_dt, String spp_id_dt, String nim_dt) {
+    public void ubah(String nama_dt, String kelas_dt, String spp_id_dt) {
         db = new koneksi();
         db.KoneksiDatabase();
         try {
@@ -113,7 +113,6 @@ public class siswa {
             update.setString(1, nama_dt);
             update.setString(2, kelas_dt);
             update.setString(3, spp_id_dt);
-            update.setString(4, nim_dt);
 //            
             update.executeUpdate();
             update.close();
