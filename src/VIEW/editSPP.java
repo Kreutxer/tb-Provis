@@ -74,6 +74,7 @@ public class editSPP extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Nominal");
 
+        jTextField1.setEditable(false);
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N

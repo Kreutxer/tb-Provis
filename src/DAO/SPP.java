@@ -64,8 +64,18 @@ public class SPP {
             st.executeUpdate(query);
             db.con.close();
             JOptionPane.showMessageDialog(null, "Simpan Data Berhasil");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (SQLException e) {
+
+            if (e.getErrorCode() == 1062) {
+                JOptionPane.showMessageDialog(null, "SPP ID Sudah Ada");
+            }
+            if (e.getErrorCode() == 1264){
+                JOptionPane.showMessageDialog(null, "Masukkan SPP ID dengan benar!");
+            }
+            if (e.getErrorCode() == 1452) {
+                JOptionPane.showMessageDialog(null, "ID SPP tidak ada!");
+            }
+//            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
 

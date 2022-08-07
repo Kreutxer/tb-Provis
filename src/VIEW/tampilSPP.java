@@ -244,15 +244,30 @@ public class tampilSPP extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        if(jTable1.getSelectionModel().isSelectionEmpty())
+        {  
+         JOptionPane.showMessageDialog(null, "Pilih id spp yang akan di edit terlebih dahulu", "Pesan Kesalahan", JOptionPane.ERROR_MESSAGE);
+         
+        } else {
         eSPP.setVisible(true);
 
         SPP s = new SPP();
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        hapusSpp hSpp = new hapusSpp();
-        hSpp.setVisible(true);
+        if(jTable1.getSelectionModel().isSelectionEmpty()){
+         JOptionPane.showMessageDialog(null, "Pilih terlebih dahulu nim yang ingin di hapus", "Pesan Kesalahan", JOptionPane.ERROR_MESSAGE);
+        } else {
+            SPP m = new SPP();
+            int getRow = jTable1.getSelectedRow();
+            TableModel model = jTable1.getModel();
+
+            String id_spp = model.getValueAt(getRow, 0).toString();
+            m.hapus(id_spp);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -262,10 +277,15 @@ public class tampilSPP extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        SPP sP = new SPP();
-        rs = sP.cari_SPP(jTextField1.getText());
-        model.SetTabel(jTable1, rs, namaKolom, jmlKolom, lebar);
-        bersihkan_teks();
+         if (jTextField1.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Isi terlebih dahulu kolom  pencarian nim", "Pesan Kesalahan", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else {
+            SPP sP = new SPP();
+            rs = sP.cari_SPP(jTextField1.getText());
+            model.SetTabel(jTable1, rs, namaKolom, jmlKolom, lebar);
+            bersihkan_teks();
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
