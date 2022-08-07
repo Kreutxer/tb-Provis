@@ -124,9 +124,6 @@ public class siswa {
             if (e.getErrorCode() == 1062) {
                 JOptionPane.showMessageDialog(null, "NIM Sudah Ada");
             }
-            if (e.getErrorCode() == 1062) {
-                JOptionPane.showMessageDialog(null, "NIM Sudah Ada");
-            }
         }
     }
     //pusg

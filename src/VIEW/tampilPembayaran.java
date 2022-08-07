@@ -9,7 +9,10 @@ import DAO.ModelTabel;
 import DAO.Pembayaran;
 import DAO.SPP;
 import DAO.koneksi;
+import javax.swing.JFrame;
+import VIEW.tambahPembayaran;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -35,9 +38,6 @@ public class tampilPembayaran extends javax.swing.JFrame {
     public tampilPembayaran() {
         initComponents();
     }
-    
-    private koneksi db;
-    private String query;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -101,6 +101,11 @@ public class tampilPembayaran extends javax.swing.JFrame {
                 "ID Bayar", "ID SPP", "NIM", "Tanggal", "Bulan", "Tahun", "Status"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton2.setText("Tambah Pembayaran");
@@ -186,21 +191,30 @@ public class tampilPembayaran extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        db = new koneksi();
-        db.KoneksiDatabase();
-        tambahPembayaran tP = new tambahPembayaran();
-        try {
-        query = "select id_spp from t_mahasiswa where nim=?";
         
-        
-        
-        }catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-        tP.jTextField1.setText(id_spp);
-        tP.setVisible(true);
-        
+            tambahPembayaran tP = new tambahPembayaran();
+            tP.setVisible(true);
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+
+//        tambahPembayaran sP = new tambahPembayaran();
+//        
+//        TableModel s = jTable1.getModel();
+//        int getRows = jTable1.getSelectedRow();
+//
+//        String spp_id = s.getValueAt(getRows, 1).toString();
+//        String nim = s.getValueAt(getRows, 2).toString();
+//
+//        sP.pack();
+//        sP.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//
+//        sP.idSPP.setText(spp_id);
+//        sP.isisNIM.setText(nim);
+
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

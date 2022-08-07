@@ -6,7 +6,8 @@
 package VIEW;
 
 import DAO.Pembayaran;
-
+import DAO.ModelTabel;
+import javax.swing.JTextField;
 /**
  *
  * @author HP
@@ -37,8 +38,8 @@ public class tambahPembayaran extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        idSPP = new javax.swing.JTextField();
+        isisNIM = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jTextField4 = new javax.swing.JTextField();
@@ -131,8 +132,8 @@ public class tambahPembayaran extends javax.swing.JFrame {
                             .addComponent(jLabel8))
                         .addGap(124, 124, 124)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
+                            .addComponent(idSPP)
+                            .addComponent(isisNIM)
                             .addComponent(jTextField3)
                             .addComponent(jComboBox1, 0, 270, Short.MAX_VALUE)
                             .addComponent(jTextField4)
@@ -152,10 +153,10 @@ public class tambahPembayaran extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(idSPP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4))
-                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(isisNIM, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -186,13 +187,15 @@ public class tambahPembayaran extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String id_spp = jTextField1.getText();
-        String nim = jTextField2.getText();
+        Pembayaran p = new Pembayaran();
+
+        String id_spp = idSPP.getText();
+        String nim = isisNIM.getText();
         String tanggal = jTextField3.getText();
         String bulan = (String) jComboBox1.getSelectedItem();
         String tahun = jTextField4.getText();
         String status = (String) jComboBox2.getSelectedItem();
-        Pembayaran p = new Pembayaran();
+
         p.insert(id_spp, id_spp, nim, tanggal, bulan, tahun, status);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -241,6 +244,8 @@ public class tambahPembayaran extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTextField idSPP;
+    public javax.swing.JTextField isisNIM;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -255,8 +260,6 @@ public class tambahPembayaran extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    public javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables

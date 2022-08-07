@@ -47,7 +47,6 @@ public class tampilSiswa extends javax.swing.JFrame {
     }
 
     editSiswa eS = new editSiswa();
-    editNIS eN = new editNIS();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -147,7 +146,7 @@ public class tampilSiswa extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null}
             },
             new String [] {
                 "NIM", "Nama", "Kelas", "ID SPP"
@@ -239,17 +238,17 @@ public class tampilSiswa extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        if(jTable1.getSelectionModel().isSelectionEmpty()){
-         JOptionPane.showMessageDialog(null, "Pilih terlebih dahulu nim yang ingin di hapus", "Pesan Kesalahan", JOptionPane.ERROR_MESSAGE);
+        if (jTable1.getSelectionModel().isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Pilih terlebih dahulu nim yang ingin di hapus", "Pesan Kesalahan", JOptionPane.ERROR_MESSAGE);
         } else {
             siswa m = new siswa();
             int getRow = jTable1.getSelectedRow();
             TableModel model = jTable1.getModel();
 
             String nim = model.getValueAt(getRow, 0).toString();
-           m.hapus(nim);
+            m.hapus(nim);
         }
-        
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -269,16 +268,15 @@ public class tampilSiswa extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if(jTable1.getSelectionModel().isSelectionEmpty())
-        {  
-         JOptionPane.showMessageDialog(null, "Pilih nim yang akan di edit terlebih dahulu", "Pesan Kesalahan", JOptionPane.ERROR_MESSAGE);
-         
+        if (jTable1.getSelectionModel().isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Pilih nim yang akan di edit terlebih dahulu", "Pesan Kesalahan", JOptionPane.ERROR_MESSAGE);
+
         } else {
-        eS.setVisible(true);
-        siswa s = new siswa();
+            eS.setVisible(true);
+            siswa s = new siswa();
         }
 //        rs = s.cari_siswa(jTextField1.getText());
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -290,24 +288,17 @@ public class tampilSiswa extends javax.swing.JFrame {
         String nama = model.getValueAt(getRow, 1).toString();
         String kelas = model.getValueAt(getRow, 2).toString();
         String spp_id = model.getValueAt(getRow, 3).toString();
+//        String ssss =  model.getValueAt(WIDTH, WIDTH).toString();
 
         eS.pack();
         eS.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
+
         eS.jTextField1.setText(nim);
         eS.jTextField2.setText(nama);
         eS.jTextField3.setText(kelas);
         eS.jTextField4.setText(spp_id);
 
-        int getNIS = jTable1.getSelectedRow();
-        TableModel mod = jTable1.getModel();
 
-        String nis = model.getValueAt(getNIS, 0).toString();
-
-        eN.pack();
-        eN.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
-        
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped

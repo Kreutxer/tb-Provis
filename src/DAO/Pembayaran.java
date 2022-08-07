@@ -94,17 +94,19 @@ public class Pembayaran {
         return data;
     }
 
-    public void insert(String id_bayar_dt, String spp_id_dt,String nim_dt, String tanggal_bayar_dt, String bulan_bayar_dt, String tahun_bayar_dt, String status_dt) {
+    public void insert(String id_bayar_dt, String spp_id_dt, String nim_dt, String tanggal_bayar_dt, String bulan_bayar_dt, String tahun_bayar_dt, String status_dt) {
         db = new koneksi();
         db.KoneksiDatabase();
         try {
             st = db.con.createStatement();
-            query = "INSERT INTO pembayaran (id_bayar, spp_id, nim, tanggal_bayar, bulan_bayar, tahun_bayar, status) VALUES (NULL, '"+spp_id_dt+"', '"+nim_dt+"', '"+tanggal_bayar_dt+"', '"+bulan_bayar_dt+"', '"+tahun_bayar_dt+"', '"+status_dt+"');";
+            query = "INSERT INTO pembayaran (id_bayar, spp_id, nim, tanggal_bayar, bulan_bayar, tahun_bayar, status) VALUES (NULL, '" + spp_id_dt + "', '" + nim_dt + "', '" + tanggal_bayar_dt + "', '" + bulan_bayar_dt + "', '" + tahun_bayar_dt + "', '" + status_dt + "');";
             st.executeUpdate(query);
             db.con.close();
             JOptionPane.showMessageDialog(null, "Simpan Data Berhasil");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            if (e.getErrorCode() == 1452) {
+                JOptionPane.showMessageDialog(null, "Masukkan Data Dengan Benar!");
+            }
         }
     }
 
