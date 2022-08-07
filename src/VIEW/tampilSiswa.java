@@ -8,6 +8,7 @@ package VIEW;
 import DAO.ModelTabel;
 import DAO.koneksi;
 import DAO.siswa;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import java.sql.*;
@@ -273,9 +274,14 @@ public class tampilSiswa extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        eS.setVisible(true);
-        siswa s = new siswa();
-        rs = s.cari_siswa(jTextField1.getText());
+        if (jTable1MouseClicked(evt)) {
+            eS.setVisible(true);
+            siswa s = new siswa();
+            rs = s.cari_siswa(jTextField1.getText());
+        } else {
+        JOptionPane.showMessageDialog(null, "Isi terlebih dahulu kolom  pencarian nim", "Pesan Kesalahan", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -371,4 +377,8 @@ public class tampilSiswa extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    private boolean jTable1MouseClicked(ActionEvent evt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -11,6 +11,8 @@ package VIEW;
  */
 import DAO.siswa;
 import VIEW.tampilSiswa;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class tambahSiswa extends javax.swing.JFrame {
 
@@ -215,13 +217,25 @@ public class tambahSiswa extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:    
         siswa s = new siswa();
-
-        s.insert(isiNIM.getText(),
+        int res = JOptionPane.showOptionDialog(new JFrame(), "Apakah data yang di isi sudah betul?","Notification",
+         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+         new Object[] { "Yes", "No" }, JOptionPane.YES_OPTION);
+      if (res == JOptionPane.YES_OPTION) {
+         s.insert(isiNIM.getText(),
                 isiNAMA.getText(),
                 isiKELAS.getText(),
                 isiIDSPP.getText());
 
         bersihkan_teks();
+      } else if (res == JOptionPane.NO_OPTION) {
+         this.toBack();
+            tambahSiswa vtsiswa = new tambahSiswa();
+            vtsiswa.setVisible(true);
+      } else if (res == JOptionPane.CLOSED_OPTION) {
+         System.out.println("Window closed without selecting!");
+      }
+   
+        
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked

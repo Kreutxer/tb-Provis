@@ -54,6 +54,7 @@ public class editSiswa extends javax.swing.JFrame {
 
         jLabel2.setText("NIS ");
 
+        jTextField1.setEditable(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -199,11 +200,12 @@ public class editSiswa extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         siswa sw = new siswa();
+        String nim = jTextField1.getText();
         String nama = jTextField2.getText();
         String kelas = jTextField3.getText();
         String spp_id = jTextField4.getText();
         
-        sw.ubah(nama, kelas, spp_id);
+        sw.ubah(nama, kelas, spp_id, nim);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
