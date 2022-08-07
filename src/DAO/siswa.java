@@ -88,10 +88,17 @@ public class siswa {
             db.con.close();
             JOptionPane.showMessageDialog(null, "Simpan Data Berhasil");
         } catch (SQLException e) {
-//            JOptionPane.showMessageDialog(null, e.getMessage());
+
             if (e.getErrorCode() == 1062) {
                 JOptionPane.showMessageDialog(null, "NIM Sudah Ada");
             }
+            if (e.getErrorCode() == 1264){
+                JOptionPane.showMessageDialog(null, "Masukkan NIM dengan benar!");
+            }
+            if (e.getErrorCode() == 1452) {
+                JOptionPane.showMessageDialog(null, "ID SPP tidak ada!");
+            }
+//            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
 
