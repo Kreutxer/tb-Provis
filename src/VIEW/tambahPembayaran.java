@@ -7,18 +7,69 @@ package VIEW;
 
 import DAO.Pembayaran;
 import DAO.ModelTabel;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
 /**
  *
  * @author HP
  */
 public class tambahPembayaran extends javax.swing.JFrame {
 
+    private String bulan_bayar;
+
     /**
      * Creates new form tambahPembayaran
      */
     public tambahPembayaran() {
         initComponents();
+        tglskrg();
+        tampil_combobox_nama();
+    }
+
+    public void tampil_combobox_nama() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3080/db_spp", "root", "");
+            Statement smt = cn.createStatement();
+            String sql = "SELECT id_spp FROM spp";
+            ResultSet res = smt.executeQuery(sql);
+            while (res.next()) {
+                Object[] ob = new Object[1];
+                ob[0] = res.getString((1));
+                jComboBox3.addItem((String) ob[0]);
+            }
+            res.close();
+            smt.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error" + e);
+        }
+    }
+//
+//    public void cek_bulan() {
+//        try {
+//            Class.forName("com.mysql.jdbc.Driver");
+//            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3080/db_spp", "root", "");
+//            Statement smt = cn.createStatement();
+//            String sql = "SELECT * FROM pembayaran WHERE bulan_bayar='" + bulan_bayar + "'";
+//            ResultSet res = smt.executeQuery(sql);
+//
+//        } catch (Exception e) {
+//
+//        }
+//    }
+
+    public void tglskrg() {
+        Date skrg = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");//yyyy-MM-dd dd-MM-yyyy
+
+        jTextField3.setText(format.format(skrg));
     }
 
     /**
@@ -38,7 +89,6 @@ public class tambahPembayaran extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        idSPP = new javax.swing.JTextField();
         isisNIM = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -48,6 +98,7 @@ public class tambahPembayaran extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        jComboBox3 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,6 +161,8 @@ public class tambahPembayaran extends javax.swing.JFrame {
             }
         });
 
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Pilih ID SPP--", " " }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -131,14 +184,13 @@ public class tambahPembayaran extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(jLabel8))
                         .addGap(124, 124, 124)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(idSPP)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(isisNIM)
                             .addComponent(jTextField3)
                             .addComponent(jComboBox1, 0, 270, Short.MAX_VALUE)
                             .addComponent(jTextField4)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -153,7 +205,7 @@ public class tambahPembayaran extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(idSPP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4))
                     .addComponent(isisNIM, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -189,14 +241,14 @@ public class tambahPembayaran extends javax.swing.JFrame {
         // TODO add your handling code here:
         Pembayaran p = new Pembayaran();
 
-        String id_spp = idSPP.getText();
+        String id_spp = (String) jComboBox3.getSelectedItem();
         String nim = isisNIM.getText();
         String tanggal = jTextField3.getText();
         String bulan = (String) jComboBox1.getSelectedItem();
         String tahun = jTextField4.getText();
         String status = (String) jComboBox2.getSelectedItem();
 
-        p.insert(id_spp, id_spp, nim, tanggal, bulan, tahun, status);
+            p.insert(id_spp, id_spp, nim, tanggal, bulan, tahun, status);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -244,12 +296,12 @@ public class tambahPembayaran extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JTextField idSPP;
     public javax.swing.JTextField isisNIM;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

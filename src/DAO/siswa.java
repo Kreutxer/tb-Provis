@@ -98,7 +98,7 @@ public class siswa {
             if (e.getErrorCode() == 1452) {
                 JOptionPane.showMessageDialog(null, "ID SPP tidak ada!");
             }
-//            JOptionPane.showMessageDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
 
@@ -121,8 +121,8 @@ public class siswa {
             JOptionPane.showMessageDialog(null, "Berhasil Merubah Data");
 
         } catch (SQLException e) {
-            if (e.getErrorCode() == 1062) {
-                JOptionPane.showMessageDialog(null, "NIM Sudah Ada");
+            if (e.getErrorCode() == 1452) {
+                JOptionPane.showMessageDialog(null, "ID SPP tidak ada!");
             }
         }
     }

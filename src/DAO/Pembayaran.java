@@ -111,4 +111,5 @@ public class Pembayaran {
     }
 
     //INSERT INTO pembayaran (id_bayar, spp_id, nim, tanggal_bayar, bulan_bayar, tahun_bayar, status) VALUES (NULL, '5', '10120067', '2022-07-14', 'August', '2022', 'lunas');
+
 }

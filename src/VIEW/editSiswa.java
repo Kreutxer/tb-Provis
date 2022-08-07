@@ -23,6 +23,8 @@ public class editSiswa extends javax.swing.JFrame {
     public editSiswa() {
         initComponents();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,7 +54,7 @@ public class editSiswa extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setText("NIS ");
+        jLabel2.setText("NIM");
 
         jTextField1.setEditable(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
