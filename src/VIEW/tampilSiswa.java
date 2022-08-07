@@ -8,7 +8,6 @@ package VIEW;
 import DAO.ModelTabel;
 import DAO.koneksi;
 import DAO.siswa;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import java.sql.*;
@@ -253,8 +252,17 @@ public class tampilSiswa extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        hapusSiswa hSiswa = new hapusSiswa();
-        hSiswa.setVisible(true);
+        if(jTable1.getSelectionModel().isSelectionEmpty()){
+         JOptionPane.showMessageDialog(null, "Pilih terlebih dahulu nim yang ingin di hapus", "Pesan Kesalahan", JOptionPane.ERROR_MESSAGE);
+        } else {
+            siswa m = new siswa();
+            int getRow = jTable1.getSelectedRow();
+            TableModel model = jTable1.getModel();
+
+            String nim = model.getValueAt(getRow, 0).toString();
+           m.hapus(nim);
+        }
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -274,14 +282,16 @@ public class tampilSiswa extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if (jTable1MouseClicked(evt)) {
-            eS.setVisible(true);
-            siswa s = new siswa();
-            rs = s.cari_siswa(jTextField1.getText());
+        if(jTable1.getSelectionModel().isSelectionEmpty())
+        {  
+         JOptionPane.showMessageDialog(null, "Pilih nim yang akan di edit terlebih dahulu", "Pesan Kesalahan", JOptionPane.ERROR_MESSAGE);
+         
         } else {
-        JOptionPane.showMessageDialog(null, "Isi terlebih dahulu kolom  pencarian nim", "Pesan Kesalahan", JOptionPane.ERROR_MESSAGE);
-            return;
+        eS.setVisible(true);
+        siswa s = new siswa();
         }
+//        rs = s.cari_siswa(jTextField1.getText());
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -296,7 +306,7 @@ public class tampilSiswa extends javax.swing.JFrame {
 
         eS.pack();
         eS.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+        
         eS.jTextField1.setText(nim);
         eS.jTextField2.setText(nama);
         eS.jTextField3.setText(kelas);
@@ -377,8 +387,4 @@ public class tampilSiswa extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
-
-    private boolean jTable1MouseClicked(ActionEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
