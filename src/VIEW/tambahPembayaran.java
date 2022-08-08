@@ -141,20 +141,20 @@ public class tambahPembayaran extends javax.swing.JFrame {
                 case "Februari":
                     this.namaBulan = "February";
                     try {
-                        int countJanStatus = 0;
-                        Statement stJanStatus = cn.createStatement();
-                        ResultSet checkJanStatus = stJanStatus.executeQuery("select * from pembayaran where bulan_bayar = 'Februari' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
+                        int countFebStatus = 0;
+                        Statement stFebStatus = cn.createStatement();
+                        ResultSet checkFebStatus = stFebStatus.executeQuery("select * from pembayaran where bulan_bayar = 'Februari' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
                         PreparedStatement pStatement = null;
-                        while (checkJanStatus.next()) {
-                            countJanStatus = countJanStatus + 1;
+                        while (checkFebStatus.next()) {
+                            countFebStatus = countFebStatus + 1;
                             JOptionPane.showMessageDialog(null, "SPP SUDAH DIBAYAR");
                         }
 
-                        if (countJanStatus == 0) {
-                            int payJan = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
+                        if (countFebStatus == 0) {
+                            int payFeb = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
                                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
                                     new Object[]{"Yes", "No"}, JOptionPane.YES_OPTION);
-                            if (payJan == JOptionPane.YES_OPTION) {
+                            if (payFeb == JOptionPane.YES_OPTION) {
                                 Class.forName("com.mysql.jdbc.Driver");
                                 // "jdbc:mysql://localhost:3080/db_spp", "root", ""; // rendy
 //                            urlValue = "jdbc:mysql://localhost:3307/db_spp", "root", "";
@@ -176,11 +176,11 @@ public class tambahPembayaran extends javax.swing.JFrame {
                                     JOptionPane.showMessageDialog(null, "Penambahan data gagal");
                                 }
                                 pStatement.close();
-                            } else if (payJan == JOptionPane.NO_OPTION) {
+                            } else if (payFeb == JOptionPane.NO_OPTION) {
                                 this.toBack();
                                 tambahPembayaran tP = new tambahPembayaran();
                                 tP.setVisible(true);
-                            } else if (payJan == JOptionPane.CLOSED_OPTION) {
+                            } else if (payFeb == JOptionPane.CLOSED_OPTION) {
                                 System.out.println("Window closed without selecting!");
                             }
 
@@ -192,20 +192,20 @@ public class tambahPembayaran extends javax.swing.JFrame {
                 case "Maret":
                     this.namaBulan = "March";
                     try {
-                        int countJanStatus = 0;
-                        Statement stJanStatus = cn.createStatement();
-                        ResultSet checkJanStatus = stJanStatus.executeQuery("select * from pembayaran where bulan_bayar = 'Maret' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
+                        int countMarStatus = 0;
+                        Statement stMarStatus = cn.createStatement();
+                        ResultSet checkMarStatus = stMarStatus.executeQuery("select * from pembayaran where bulan_bayar = 'Maret' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
                         PreparedStatement pStatement = null;
-                        while (checkJanStatus.next()) {
-                            countJanStatus = countJanStatus + 1;
+                        while (checkMarStatus.next()) {
+                            countMarStatus = countMarStatus + 1;
                             JOptionPane.showMessageDialog(null, "SPP SUDAH DIBAYAR");
                         }
 
-                        if (countJanStatus == 0) {
-                            int payJan = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
+                        if (countMarStatus == 0) {
+                            int payMar = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
                                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
                                     new Object[]{"Yes", "No"}, JOptionPane.YES_OPTION);
-                            if (payJan == JOptionPane.YES_OPTION) {
+                            if (payMar == JOptionPane.YES_OPTION) {
                                 Class.forName("com.mysql.jdbc.Driver");
                                 // "jdbc:mysql://localhost:3080/db_spp", "root", ""; // rendy
 //                            urlValue = "jdbc:mysql://localhost:3307/db_spp", "root", "";
@@ -227,11 +227,11 @@ public class tambahPembayaran extends javax.swing.JFrame {
                                     JOptionPane.showMessageDialog(null, "Penambahan data gagal");
                                 }
                                 pStatement.close();
-                            } else if (payJan == JOptionPane.NO_OPTION) {
+                            } else if (payMar == JOptionPane.NO_OPTION) {
                                 this.toBack();
                                 tambahPembayaran tP = new tambahPembayaran();
                                 tP.setVisible(true);
-                            } else if (payJan == JOptionPane.CLOSED_OPTION) {
+                            } else if (payMar == JOptionPane.CLOSED_OPTION) {
                                 System.out.println("Window closed without selecting!");
                             }
 
@@ -243,20 +243,20 @@ public class tambahPembayaran extends javax.swing.JFrame {
                 case "April":
                     this.namaBulan = "April";
                     try {
-                        int countJanStatus = 0;
-                        Statement stJanStatus = cn.createStatement();
-                        ResultSet checkJanStatus = stJanStatus.executeQuery("select * from pembayaran where bulan_bayar = 'April' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
+                        int countAprStatus = 0;
+                        Statement stAprStatus = cn.createStatement();
+                        ResultSet checkAprStatus = stAprStatus.executeQuery("select * from pembayaran where bulan_bayar = 'April' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
                         PreparedStatement pStatement = null;
-                        while (checkJanStatus.next()) {
-                            countJanStatus = countJanStatus + 1;
+                        while (checkAprStatus.next()) {
+                            countAprStatus = countAprStatus + 1;
                             JOptionPane.showMessageDialog(null, "SPP SUDAH DIBAYAR");
                         }
 
-                        if (countJanStatus == 0) {
-                            int payJan = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
+                        if (countAprStatus == 0) {
+                            int payApr = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
                                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
                                     new Object[]{"Yes", "No"}, JOptionPane.YES_OPTION);
-                            if (payJan == JOptionPane.YES_OPTION) {
+                            if (payApr == JOptionPane.YES_OPTION) {
                                 Class.forName("com.mysql.jdbc.Driver");
                                 // "jdbc:mysql://localhost:3080/db_spp", "root", ""; // rendy
 //                            urlValue = "jdbc:mysql://localhost:3307/db_spp", "root", "";
@@ -278,11 +278,11 @@ public class tambahPembayaran extends javax.swing.JFrame {
                                     JOptionPane.showMessageDialog(null, "Penambahan data gagal");
                                 }
                                 pStatement.close();
-                            } else if (payJan == JOptionPane.NO_OPTION) {
+                            } else if (payApr == JOptionPane.NO_OPTION) {
                                 this.toBack();
                                 tambahPembayaran tP = new tambahPembayaran();
                                 tP.setVisible(true);
-                            } else if (payJan == JOptionPane.CLOSED_OPTION) {
+                            } else if (payApr == JOptionPane.CLOSED_OPTION) {
                                 System.out.println("Window closed without selecting!");
                             }
 
@@ -294,20 +294,20 @@ public class tambahPembayaran extends javax.swing.JFrame {
                 case "Mei":
                     this.namaBulan = "Mei";
                     try {
-                        int countJanStatus = 0;
-                        Statement stJanStatus = cn.createStatement();
-                        ResultSet checkJanStatus = stJanStatus.executeQuery("select * from pembayaran where bulan_bayar = 'Mei' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
+                        int countMeiStatus = 0;
+                        Statement stMeiStatus = cn.createStatement();
+                        ResultSet checkMeiStatus = stMeiStatus.executeQuery("select * from pembayaran where bulan_bayar = 'Mei' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
                         PreparedStatement pStatement = null;
-                        while (checkJanStatus.next()) {
-                            countJanStatus = countJanStatus + 1;
+                        while (checkMeiStatus.next()) {
+                            countMeiStatus = countMeiStatus + 1;
                             JOptionPane.showMessageDialog(null, "SPP SUDAH DIBAYAR");
                         }
 
-                        if (countJanStatus == 0) {
-                            int payJan = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
+                        if (countMeiStatus == 0) {
+                            int payMei = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
                                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
                                     new Object[]{"Yes", "No"}, JOptionPane.YES_OPTION);
-                            if (payJan == JOptionPane.YES_OPTION) {
+                            if (payMei == JOptionPane.YES_OPTION) {
                                 Class.forName("com.mysql.jdbc.Driver");
                                 // "jdbc:mysql://localhost:3080/db_spp", "root", ""; // rendy
 //                            urlValue = "jdbc:mysql://localhost:3307/db_spp", "root", "";
@@ -329,11 +329,11 @@ public class tambahPembayaran extends javax.swing.JFrame {
                                     JOptionPane.showMessageDialog(null, "Penambahan data gagal");
                                 }
                                 pStatement.close();
-                            } else if (payJan == JOptionPane.NO_OPTION) {
+                            } else if (payMei == JOptionPane.NO_OPTION) {
                                 this.toBack();
                                 tambahPembayaran tP = new tambahPembayaran();
                                 tP.setVisible(true);
-                            } else if (payJan == JOptionPane.CLOSED_OPTION) {
+                            } else if (payMei == JOptionPane.CLOSED_OPTION) {
                                 System.out.println("Window closed without selecting!");
                             }
 
@@ -345,20 +345,20 @@ public class tambahPembayaran extends javax.swing.JFrame {
                 case "Juni":
                     this.namaBulan = "Mei";
                     try {
-                        int countJanStatus = 0;
-                        Statement stJanStatus = cn.createStatement();
-                        ResultSet checkJanStatus = stJanStatus.executeQuery("select * from pembayaran where bulan_bayar = 'Juni' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
+                        int countJunStatus = 0;
+                        Statement stJunStatus = cn.createStatement();
+                        ResultSet checkJunStatus = stJunStatus.executeQuery("select * from pembayaran where bulan_bayar = 'Juni' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
                         PreparedStatement pStatement = null;
-                        while (checkJanStatus.next()) {
-                            countJanStatus = countJanStatus + 1;
+                        while (checkJunStatus.next()) {
+                            countJunStatus = countJunStatus + 1;
                             JOptionPane.showMessageDialog(null, "SPP SUDAH DIBAYAR");
                         }
 
-                        if (countJanStatus == 0) {
-                            int payJan = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
+                        if (countJunStatus == 0) {
+                            int payJun = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
                                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
                                     new Object[]{"Yes", "No"}, JOptionPane.YES_OPTION);
-                            if (payJan == JOptionPane.YES_OPTION) {
+                            if (payJun == JOptionPane.YES_OPTION) {
                                 Class.forName("com.mysql.jdbc.Driver");
                                 // "jdbc:mysql://localhost:3080/db_spp", "root", ""; // rendy
 //                            urlValue = "jdbc:mysql://localhost:3307/db_spp", "root", "";
@@ -380,11 +380,11 @@ public class tambahPembayaran extends javax.swing.JFrame {
                                     JOptionPane.showMessageDialog(null, "Penambahan data gagal");
                                 }
                                 pStatement.close();
-                            } else if (payJan == JOptionPane.NO_OPTION) {
+                            } else if (payJun == JOptionPane.NO_OPTION) {
                                 this.toBack();
                                 tambahPembayaran tP = new tambahPembayaran();
                                 tP.setVisible(true);
-                            } else if (payJan == JOptionPane.CLOSED_OPTION) {
+                            } else if (payJun == JOptionPane.CLOSED_OPTION) {
                                 System.out.println("Window closed without selecting!");
                             }
 
@@ -396,20 +396,20 @@ public class tambahPembayaran extends javax.swing.JFrame {
                 case "Juli":
                     this.namaBulan = "Mei";
                     try {
-                        int countJanStatus = 0;
-                        Statement stJanStatus = cn.createStatement();
-                        ResultSet checkJanStatus = stJanStatus.executeQuery("select * from pembayaran where bulan_bayar = 'Juli' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
+                        int countJulStatus = 0;
+                        Statement stJulStatus = cn.createStatement();
+                        ResultSet checkJulStatus = stJulStatus.executeQuery("select * from pembayaran where bulan_bayar = 'Juli' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
                         PreparedStatement pStatement = null;
-                        while (checkJanStatus.next()) {
-                            countJanStatus = countJanStatus + 1;
+                        while (checkJulStatus.next()) {
+                            countJulStatus = countJulStatus + 1;
                             JOptionPane.showMessageDialog(null, "SPP SUDAH DIBAYAR");
                         }
 
-                        if (countJanStatus == 0) {
-                            int payJan = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
+                        if (countJulStatus == 0) {
+                            int payJul = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
                                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
                                     new Object[]{"Yes", "No"}, JOptionPane.YES_OPTION);
-                            if (payJan == JOptionPane.YES_OPTION) {
+                            if (payJul == JOptionPane.YES_OPTION) {
                                 Class.forName("com.mysql.jdbc.Driver");
                                 // "jdbc:mysql://localhost:3080/db_spp", "root", ""; // rendy
 //                            urlValue = "jdbc:mysql://localhost:3307/db_spp", "root", "";
@@ -431,11 +431,11 @@ public class tambahPembayaran extends javax.swing.JFrame {
                                     JOptionPane.showMessageDialog(null, "Penambahan data gagal");
                                 }
                                 pStatement.close();
-                            } else if (payJan == JOptionPane.NO_OPTION) {
+                            } else if (payJul == JOptionPane.NO_OPTION) {
                                 this.toBack();
                                 tambahPembayaran tP = new tambahPembayaran();
                                 tP.setVisible(true);
-                            } else if (payJan == JOptionPane.CLOSED_OPTION) {
+                            } else if (payJul == JOptionPane.CLOSED_OPTION) {
                                 System.out.println("Window closed without selecting!");
                             }
 
@@ -447,20 +447,20 @@ public class tambahPembayaran extends javax.swing.JFrame {
                 case "Agustus":
                     this.namaBulan = "Mei";
                     try {
-                        int countJanStatus = 0;
-                        Statement stJanStatus = cn.createStatement();
-                        ResultSet checkJanStatus = stJanStatus.executeQuery("select * from pembayaran where bulan_bayar = 'Agustus' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
+                        int countAguStatus = 0;
+                        Statement stAguStatus = cn.createStatement();
+                        ResultSet checkAguStatus = stAguStatus.executeQuery("select * from pembayaran where bulan_bayar = 'Agustus' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
                         PreparedStatement pStatement = null;
-                        while (checkJanStatus.next()) {
-                            countJanStatus = countJanStatus + 1;
+                        while (checkAguStatus.next()) {
+                            countAguStatus = countAguStatus + 1;
                             JOptionPane.showMessageDialog(null, "SPP SUDAH DIBAYAR");
                         }
 
-                        if (countJanStatus == 0) {
-                            int payJan = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
+                        if (countAguStatus == 0) {
+                            int payAgu = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
                                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
                                     new Object[]{"Yes", "No"}, JOptionPane.YES_OPTION);
-                            if (payJan == JOptionPane.YES_OPTION) {
+                            if (payAgu == JOptionPane.YES_OPTION) {
                                 Class.forName("com.mysql.jdbc.Driver");
                                 // "jdbc:mysql://localhost:3080/db_spp", "root", ""; // rendy
 //                            urlValue = "jdbc:mysql://localhost:3307/db_spp", "root", "";
@@ -482,11 +482,11 @@ public class tambahPembayaran extends javax.swing.JFrame {
                                     JOptionPane.showMessageDialog(null, "Penambahan data gagal");
                                 }
                                 pStatement.close();
-                            } else if (payJan == JOptionPane.NO_OPTION) {
+                            } else if (payAgu == JOptionPane.NO_OPTION) {
                                 this.toBack();
                                 tambahPembayaran tP = new tambahPembayaran();
                                 tP.setVisible(true);
-                            } else if (payJan == JOptionPane.CLOSED_OPTION) {
+                            } else if (payAgu == JOptionPane.CLOSED_OPTION) {
                                 System.out.println("Window closed without selecting!");
                             }
 
@@ -496,22 +496,22 @@ public class tambahPembayaran extends javax.swing.JFrame {
                     }
                     break;
                 case "September":
-                    this.namaBulan = "Mei";
+                    this.namaBulan = "September";
                     try {
-                        int countJanStatus = 0;
-                        Statement stJanStatus = cn.createStatement();
-                        ResultSet checkJanStatus = stJanStatus.executeQuery("select * from pembayaran where bulan_bayar = 'September' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
+                        int countSepStatus = 0;
+                        Statement stSepStatus = cn.createStatement();
+                        ResultSet checkSepStatus = stSepStatus.executeQuery("select * from pembayaran where bulan_bayar = 'September' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
                         PreparedStatement pStatement = null;
-                        while (checkJanStatus.next()) {
-                            countJanStatus = countJanStatus + 1;
+                        while (checkSepStatus.next()) {
+                            countSepStatus = countSepStatus + 1;
                             JOptionPane.showMessageDialog(null, "SPP SUDAH DIBAYAR");
                         }
 
-                        if (countJanStatus == 0) {
-                            int payJan = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
+                        if (countSepStatus == 0) {
+                            int paySep = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
                                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
                                     new Object[]{"Yes", "No"}, JOptionPane.YES_OPTION);
-                            if (payJan == JOptionPane.YES_OPTION) {
+                            if (paySep == JOptionPane.YES_OPTION) {
                                 Class.forName("com.mysql.jdbc.Driver");
                                 // "jdbc:mysql://localhost:3080/db_spp", "root", ""; // rendy
 //                            urlValue = "jdbc:mysql://localhost:3307/db_spp", "root", "";
@@ -533,11 +533,11 @@ public class tambahPembayaran extends javax.swing.JFrame {
                                     JOptionPane.showMessageDialog(null, "Penambahan data gagal");
                                 }
                                 pStatement.close();
-                            } else if (payJan == JOptionPane.NO_OPTION) {
+                            } else if (paySep == JOptionPane.NO_OPTION) {
                                 this.toBack();
                                 tambahPembayaran tP = new tambahPembayaran();
                                 tP.setVisible(true);
-                            } else if (payJan == JOptionPane.CLOSED_OPTION) {
+                            } else if (paySep == JOptionPane.CLOSED_OPTION) {
                                 System.out.println("Window closed without selecting!");
                             }
 
@@ -547,22 +547,22 @@ public class tambahPembayaran extends javax.swing.JFrame {
                     }
                     break;
                 case "Oktober":
-                    this.namaBulan = "Mei";
+                    this.namaBulan = "Oktober";
                     try {
-                        int countJanStatus = 0;
-                        Statement stJanStatus = cn.createStatement();
-                        ResultSet checkJanStatus = stJanStatus.executeQuery("select * from pembayaran where bulan_bayar = 'Oktober' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
+                        int countOktStatus = 0;
+                        Statement stOktStatus = cn.createStatement();
+                        ResultSet checkOktStatus = stOktStatus.executeQuery("select * from pembayaran where bulan_bayar = 'Oktober' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
                         PreparedStatement pStatement = null;
-                        while (checkJanStatus.next()) {
-                            countJanStatus = countJanStatus + 1;
+                        while (checkOktStatus.next()) {
+                            countOktStatus = countOktStatus + 1;
                             JOptionPane.showMessageDialog(null, "SPP SUDAH DIBAYAR");
                         }
 
-                        if (countJanStatus == 0) {
-                            int payJan = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
+                        if (countOktStatus == 0) {
+                            int payOkt = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
                                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
                                     new Object[]{"Yes", "No"}, JOptionPane.YES_OPTION);
-                            if (payJan == JOptionPane.YES_OPTION) {
+                            if (payOkt == JOptionPane.YES_OPTION) {
                                 Class.forName("com.mysql.jdbc.Driver");
                                 // "jdbc:mysql://localhost:3080/db_spp", "root", ""; // rendy
 //                            urlValue = "jdbc:mysql://localhost:3307/db_spp", "root", "";
@@ -584,11 +584,11 @@ public class tambahPembayaran extends javax.swing.JFrame {
                                     JOptionPane.showMessageDialog(null, "Penambahan data gagal");
                                 }
                                 pStatement.close();
-                            } else if (payJan == JOptionPane.NO_OPTION) {
+                            } else if (payOkt == JOptionPane.NO_OPTION) {
                                 this.toBack();
                                 tambahPembayaran tP = new tambahPembayaran();
                                 tP.setVisible(true);
-                            } else if (payJan == JOptionPane.CLOSED_OPTION) {
+                            } else if (payOkt == JOptionPane.CLOSED_OPTION) {
                                 System.out.println("Window closed without selecting!");
                             }
 
@@ -598,22 +598,22 @@ public class tambahPembayaran extends javax.swing.JFrame {
                     }
                     break;
                 case "November":
-                    this.namaBulan = "Mei";
+                    this.namaBulan = "November";
                     try {
-                        int countJanStatus = 0;
-                        Statement stJanStatus = cn.createStatement();
-                        ResultSet checkJanStatus = stJanStatus.executeQuery("select * from pembayaran where bulan_bayar = 'November' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
+                        int countNovStatus = 0;
+                        Statement stNovStatus = cn.createStatement();
+                        ResultSet checkNovStatus = stNovStatus.executeQuery("select * from pembayaran where bulan_bayar = 'November' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
                         PreparedStatement pStatement = null;
-                        while (checkJanStatus.next()) {
-                            countJanStatus = countJanStatus + 1;
+                        while (checkNovStatus.next()) {
+                            countNovStatus = countNovStatus + 1;
                             JOptionPane.showMessageDialog(null, "SPP SUDAH DIBAYAR");
                         }
 
-                        if (countJanStatus == 0) {
-                            int payJan = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
+                        if (countNovStatus == 0) {
+                            int payNov = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
                                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
                                     new Object[]{"Yes", "No"}, JOptionPane.YES_OPTION);
-                            if (payJan == JOptionPane.YES_OPTION) {
+                            if (payNov == JOptionPane.YES_OPTION) {
                                 Class.forName("com.mysql.jdbc.Driver");
                                 // "jdbc:mysql://localhost:3080/db_spp", "root", ""; // rendy
 //                            urlValue = "jdbc:mysql://localhost:3307/db_spp", "root", "";
@@ -635,11 +635,11 @@ public class tambahPembayaran extends javax.swing.JFrame {
                                     JOptionPane.showMessageDialog(null, "Penambahan data gagal");
                                 }
                                 pStatement.close();
-                            } else if (payJan == JOptionPane.NO_OPTION) {
+                            } else if (payNov == JOptionPane.NO_OPTION) {
                                 this.toBack();
                                 tambahPembayaran tP = new tambahPembayaran();
                                 tP.setVisible(true);
-                            } else if (payJan == JOptionPane.CLOSED_OPTION) {
+                            } else if (payNov == JOptionPane.CLOSED_OPTION) {
                                 System.out.println("Window closed without selecting!");
                             }
 
@@ -649,22 +649,22 @@ public class tambahPembayaran extends javax.swing.JFrame {
                     }
                     break;
                 case "Desember":
-                    this.namaBulan = "Mei";
+                    this.namaBulan = "Desember";
                     try {
-                        int countJanStatus = 0;
-                        Statement stJanStatus = cn.createStatement();
-                        ResultSet checkJanStatus = stJanStatus.executeQuery("select * from pembayaran where bulan_bayar = 'Desember' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
+                        int countDesStatus = 0;
+                        Statement stDesStatus = cn.createStatement();
+                        ResultSet checkDesStatus = stDesStatus.executeQuery("select * from pembayaran where bulan_bayar = 'Desember' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
                         PreparedStatement pStatement = null;
-                        while (checkJanStatus.next()) {
-                            countJanStatus = countJanStatus + 1;
+                        while (checkDesStatus.next()) {
+                            countDesStatus = countDesStatus + 1;
                             JOptionPane.showMessageDialog(null, "SPP SUDAH DIBAYAR");
                         }
 
-                        if (countJanStatus == 0) {
-                            int payJan = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
+                        if (countDesStatus == 0) {
+                            int payDes = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan " + bulan + " dengan nim " + nim + "?", "Notification",
                                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
                                     new Object[]{"Yes", "No"}, JOptionPane.YES_OPTION);
-                            if (payJan == JOptionPane.YES_OPTION) {
+                            if (payDes == JOptionPane.YES_OPTION) {
                                 Class.forName("com.mysql.jdbc.Driver");
                                 // "jdbc:mysql://localhost:3080/db_spp", "root", ""; // rendy
 //                            urlValue = "jdbc:mysql://localhost:3307/db_spp", "root", "";
@@ -686,11 +686,11 @@ public class tambahPembayaran extends javax.swing.JFrame {
                                     JOptionPane.showMessageDialog(null, "Penambahan data gagal");
                                 }
                                 pStatement.close();
-                            } else if (payJan == JOptionPane.NO_OPTION) {
+                            } else if (payDes == JOptionPane.NO_OPTION) {
                                 this.toBack();
                                 tambahPembayaran tP = new tambahPembayaran();
                                 tP.setVisible(true);
-                            } else if (payJan == JOptionPane.CLOSED_OPTION) {
+                            } else if (payDes == JOptionPane.CLOSED_OPTION) {
                                 System.out.println("Window closed without selecting!");
                             }
 
