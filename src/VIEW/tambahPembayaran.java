@@ -7,12 +7,16 @@ package VIEW;
 
 import DAO.Pembayaran;
 import DAO.ModelTabel;
+import DAO.koneksi;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -23,6 +27,8 @@ import javax.swing.JTextField;
 public class tambahPembayaran extends javax.swing.JFrame {
 
     private String bulan_bayar;
+    public String pBulan;
+    private String namaBulan;
 
     /**
      * Creates new form tambahPembayaran
@@ -32,11 +38,14 @@ public class tambahPembayaran extends javax.swing.JFrame {
         tglskrg();
         tampil_combobox_nama();
     }
+    
+  
 
     public void tampil_combobox_nama() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3080/db_spp", "root", "");
+//            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3080/db_spp", "root", ""); // rendy
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_spp", "root", ""); // port bagas
             Statement smt = cn.createStatement();
             String sql = "SELECT id_spp FROM spp";
             ResultSet res = smt.executeQuery(sql);
@@ -51,6 +60,7 @@ public class tambahPembayaran extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error" + e);
         }
     }
+    
 //
 //    public void cek_bulan() {
 //        try {
@@ -64,6 +74,84 @@ public class tambahPembayaran extends javax.swing.JFrame {
 //
 //        }
 //    }
+    public void cek_lunas(String namaBulan)
+    {   
+        try
+        {
+        Class.forName("com.mysql.jdbc.Driver");
+//            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3080/db_spp", "root", ""); // rendy
+        Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_spp", "root", ""); // port bagas
+        
+        Pembayaran p = new Pembayaran();
+        String id_spp = (String) jComboBox3.getSelectedItem();
+        String nim = isisNIM.getText();
+        String tanggal = jTextField3.getText();
+        String bulan = jTextField5.getText();
+        String tahun = jTextField4.getText();
+        String status = "lunas";
+        
+        switch(bulan){
+            case "1":
+                this.namaBulan = "January";
+                try {
+                int countJanStatus = 0;
+                Statement stJanStatus = cn.createStatement();
+                ResultSet checkJanStatus = stJanStatus.executeQuery("select * from pembayaran where bulan_bayar = 'Januari' AND nim = '" + nim + "' AND spp_id = '" + id_spp + "'");
+                PreparedStatement pStatement = null;
+                while (checkJanStatus.next()) {
+                    countJanStatus = countJanStatus + 1;
+                    JOptionPane.showMessageDialog(null, "SPP SUDAH DIBAYAR");
+                }
+
+                if (countJanStatus == 0) {
+                    int payJan = JOptionPane.showOptionDialog(new JFrame(), "Apakah benar anda akan melakukan pembayaran SPP pada bulan "+ bulan +" dengan nim " + nim  + "?","Notification",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+                    new Object[] { "Yes", "No" }, JOptionPane.YES_OPTION);
+                    if (payJan == JOptionPane.YES_OPTION) {
+                            Class.forName("com.mysql.jdbc.Driver");
+                            // "jdbc:mysql://localhost:3080/db_spp", "root", ""; // rendy
+//                            urlValue = "jdbc:mysql://localhost:3307/db_spp", "root", "";
+
+                            String sql = "INSERT INTO pembayaran (`spp_id`, `nim`, `tanggal_bayar`, `bulan_bayar`, `tahun_bayar`, `status`) VALUES (?, ?, ?, ?, ?, ?)";
+                            pStatement = cn.prepareStatement(sql);
+
+                            pStatement.setString(1, id_spp);
+                            pStatement.setString(2, nim);
+                            pStatement.setString(3, tanggal);
+                            pStatement.setString(4, "Januari");
+                            pStatement.setString(5, tahun);
+                            pStatement.setString(6, "1");
+                            
+                            int intBaris = pStatement.executeUpdate();
+                            if (intBaris > 0) {
+                                JOptionPane.showMessageDialog(null, "Penambahan data berhasil");
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Penambahan data gagal");
+                            }
+                            pStatement.close();
+                            }else if (payJan == JOptionPane.NO_OPTION) {
+                                this.toBack();
+                                    tambahPembayaran tP = new tambahPembayaran();
+                                    tP.setVisible(true);
+                            } else if (payJan == JOptionPane.CLOSED_OPTION) {
+                                System.out.println("Window closed without selecting!");
+                            } 
+                    
+                }
+            } catch (SQLException checkJanStatus) {
+                System.out.println("Koneksi Gagal" + checkJanStatus.toString());
+            }break;
+             case "2":
+                this.namaBulan = "Februari";
+                try
+                {
+                    JOptionPane.showMessageDialog(null, "aku ganteng");
+                }catch (Exception e){
+                }
+        }
+        
+        }catch (Exception e) {}
+        }
 
     public void tglskrg() {
         Date skrg = new Date();
@@ -91,14 +179,13 @@ public class tambahPembayaran extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         isisNIM = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jTextField4 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jComboBox3 = new javax.swing.JComboBox<>();
+        jTextField5 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -143,10 +230,6 @@ public class tambahPembayaran extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Status");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Pilih Bulan Bayar--", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" }));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Belum Lunas", "Lunas" }));
-
         jButton1.setText("Simpan");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,6 +245,13 @@ public class tambahPembayaran extends javax.swing.JFrame {
         });
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Pilih ID SPP--", " " }));
+
+        jTextField5.setToolTipText("masukan angka bulan");
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -187,10 +277,9 @@ public class tambahPembayaran extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(isisNIM)
                             .addComponent(jTextField3)
-                            .addComponent(jComboBox1, 0, 270, Short.MAX_VALUE)
                             .addComponent(jTextField4)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jComboBox3, 0, 270, Short.MAX_VALUE)
+                            .addComponent(jTextField5))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -216,18 +305,16 @@ public class tambahPembayaran extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -244,11 +331,11 @@ public class tambahPembayaran extends javax.swing.JFrame {
         String id_spp = (String) jComboBox3.getSelectedItem();
         String nim = isisNIM.getText();
         String tanggal = jTextField3.getText();
-        String bulan = (String) jComboBox1.getSelectedItem();
+        String bulan = jTextField5.getText();
         String tahun = jTextField4.getText();
-        String status = (String) jComboBox2.getSelectedItem();
-
-            p.insert(id_spp, id_spp, nim, tanggal, bulan, tahun, status);
+        String status = "lunas";
+            
+        cek_lunas(namaBulan);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -259,6 +346,10 @@ public class tambahPembayaran extends javax.swing.JFrame {
         new mainFrm().toFront();
         new mainFrm().setState(java.awt.Frame.NORMAL);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,8 +390,6 @@ public class tambahPembayaran extends javax.swing.JFrame {
     public javax.swing.JTextField isisNIM;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -314,5 +403,6 @@ public class tambahPembayaran extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }

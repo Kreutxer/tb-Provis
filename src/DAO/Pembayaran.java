@@ -20,7 +20,9 @@ public class Pembayaran {
     private Statement st;
     private String query;
     private ResultSet rs;
-
+    
+    
+    
     public String[][] Tampil_Pembayaran() {
         rs = null;
         String[][] data = null;
