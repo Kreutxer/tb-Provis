@@ -38,7 +38,6 @@
                           <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -46,7 +45,7 @@
                           <Component id="jTextField3" max="32767" attributes="0"/>
                           <Component id="jTextField4" max="32767" attributes="0"/>
                           <Component id="jComboBox3" pref="270" max="32767" attributes="0"/>
-                          <Component id="jTextField5" max="32767" attributes="0"/>
+                          <Component id="jComboBox2" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -81,16 +80,14 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace pref="62" max="32767" attributes="0"/>
               <Component id="jButton1" min="-2" pref="50" max="-2" attributes="0"/>
@@ -183,14 +180,6 @@
         <Property name="text" type="java.lang.String" value="Tahun"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel8">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="14" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Status"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="isisNIM">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -233,13 +222,29 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField5">
+    <Component class="javax.swing.JComboBox" name="jComboBox2">
       <Properties>
-        <Property name="toolTipText" type="java.lang.String" value="masukan angka bulan"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="13">
+            <StringItem index="0" value="--Pilih Bulan--"/>
+            <StringItem index="1" value="Januari"/>
+            <StringItem index="2" value="Februari"/>
+            <StringItem index="3" value="Maret"/>
+            <StringItem index="4" value="April"/>
+            <StringItem index="5" value="Mei"/>
+            <StringItem index="6" value="Juni"/>
+            <StringItem index="7" value="Juli"/>
+            <StringItem index="8" value="Agustus"/>
+            <StringItem index="9" value="September"/>
+            <StringItem index="10" value="Oktober"/>
+            <StringItem index="11" value="November"/>
+            <StringItem index="12" value="Desember"/>
+          </StringArray>
+        </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField5ActionPerformed"/>
-      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
